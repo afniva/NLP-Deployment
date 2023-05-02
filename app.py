@@ -1,13 +1,14 @@
 '''
 	Contoh Deloyment untuk Domain Natural Language Processing (NLP)
-	Orbit Future Academy - AI Mastery - KM Batch 3
+	Orbit Future Academy - AI Mastery - KM Batch 4
 	Tim Deployment
-	2022
+	2023
 '''
 
 # =[Modules dan Packages]========================
 
 from flask import Flask,render_template,request,jsonify
+from flask_ngrok import run_with_ngrok
 import pandas as pd
 import numpy as np
 from joblib import load
@@ -88,8 +89,5 @@ if __name__ == '__main__':
 	model = load('model_spam_tfidf_nb.model')
 
 	# Run Flask di localhost 
-	app.run(host="localhost", port=8000, debug=True)
-	
-	
-
-
+	run_with_ngrok(app)
+	app.run()
